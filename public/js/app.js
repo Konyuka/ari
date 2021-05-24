@@ -2176,13 +2176,342 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['response', 'bridges', 'context', 'channelDetails', 'rtp', 'callResponse'],
+  props: ['response', 'bridges', 'context', 'channelDetails', 'rtp', 'callResponse', 'createChannelResponse'],
   components: {},
   data: function data() {
     return {
+      createChannel: {
+        ext: ''
+      },
       call: {
-        callExt: ''
+        callExt: '',
+        channelID: '',
+        app: '',
+        dtmf: '',
+        muteMode: ''
       },
       getChannelData: {
         channelId: '',
@@ -2211,6 +2540,146 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    dialChannel: function dialChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/dial"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    recordChannel: function recordChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/record"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    silenceChannel: function silenceChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/silence"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    mohChannel: function mohChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/moh"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    holdChannel: function holdChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/hold"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    muteChannel: function muteChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/mute"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    sendDTMF: function sendDTMF() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/ring"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    ringChannel: function ringChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/ring"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    answerChannel: function answerChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/answer"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    transferCall: function transferCall() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/redirect"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    transferChannel: function transferChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/move"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    resumeChannel: function resumeChannel() {
+      this.$inertia.post("/channels/".concat(this.call.channelId, "/continue"), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    channelCreate: function channelCreate() {
+      this.$inertia.post("/channels/create", this.createChannel, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    makeCallwithChannelID: function makeCallwithChannelID() {
+      this.$inertia.post("/channels/".concat(this.call.channelId), this.call, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
     makeCall: function makeCall() {
       this.$inertia.post("/channels", this.call, {
         onSuccess: function onSuccess(response) {
@@ -2245,7 +2714,7 @@ __webpack_require__.r(__webpack_exports__);
     channelIdFunc: function channelIdFunc(data) {
       this.showChannelDetails = true;
       this.getChannelData.channelId = data;
-      this.$inertia.post("/channels/".concat(this.getChannelData.channelId), this.getChannelData, {
+      this.$inertia.post("/channel/".concat(this.getChannelData.channelId), this.getChannelData, {
         onSuccess: function onSuccess(response) {
           console.log(response);
         },
@@ -2541,6 +3010,167 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['response', 'bridges', 'bridgeId'],
   components: {},
@@ -2550,10 +3180,77 @@ __webpack_require__.r(__webpack_exports__);
       showBridgeID: false,
       channelDetails: {
         id: ''
+      },
+      bridge: {
+        type: '',
+        bridgeId: '',
+        name: '',
+        channelId: '',
+        format: ''
       }
     };
   },
   methods: {
+    recordBridge: function recordBridge() {
+      this.$inertia.post("/bridges/".concat(this.bridge.bridgeId, "/record"), this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    mohBridge: function mohBridge() {
+      this.$inertia.post("/bridges/".concat(this.bridge.bridgeId, "/moh"), this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    removeChannelFromBridge: function removeChannelFromBridge() {
+      this.$inertia.post("/bridges/".concat(this.bridge.bridgeId, "/removeChannel"), this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    addChannelToBridge: function addChannelToBridge() {
+      this.$inertia.post("/bridges/".concat(this.bridge.bridgeId, "/addChannel"), this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    updateBridge: function updateBridge() {
+      this.$inertia.post("/bridges", this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    makeBridge: function makeBridge() {
+      this.$inertia.post("/bridges", this.bridge, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
     showBridgeDetails: function showBridgeDetails(IdString) {
       this.channelDetails.id = IdString;
       this.showBridgeID = true;
@@ -2634,6 +3331,176 @@ __webpack_require__.r(__webpack_exports__);
         onSuccess: function onSuccess(response) {
           console.log(response);
           _this.device.state = response.props.deviceStateId.state;
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['context', 'dialResponse', 'ringResponse', 'bridgeData'],
+  components: {},
+  created: function created() {// this.reset()
+  },
+  computed: {
+    online: function online() {
+      return this.$store.state.online;
+    }
+  },
+  data: function data() {
+    return {
+      out: {
+        number: ''
+      },
+      bridgeParams: {
+        bridgeId: '',
+        channelId: ''
+      },
+      loginTrue: false,
+      login: {
+        ext: ''
+      },
+      showChannels: false
+    };
+  },
+  methods: {
+    callOutside: function callOutside() {
+      this.$inertia.post("/outside", this.out, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    hangUp: function hangUp() {
+      var _this = this;
+
+      this.bridgeParams.bridgeId = localStorage.getItem('bridgeId');
+      this.bridgeParams.channelId = this.$store.state.channelDetails.id;
+      this.$inertia.post("/dial/bridges/".concat(this.bridgeParams.bridgeId, "/removeChannel"), this.bridgeParams, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+
+          _this.$store.dispatch("setOnline", 'ON');
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    dial: function dial() {
+      var _this2 = this;
+
+      this.bridgeParams.bridgeId = this.login.ext;
+      this.bridgeParams.channelId = this.$store.state.channelDetails.id;
+      localStorage.setItem('bridgeId', this.login.ext);
+      this.$inertia.post("/dial/bridges/".concat(this.bridgeParams.bridgeId, "/addChannel"), this.bridgeParams, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+
+          _this2.$store.dispatch("setOnline", 'OnCall');
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    giveBridge: function giveBridge() {
+      this.bridgeParams.bridgeId = localStorage.getItem('extension');
+      this.bridgeParams.channelId = this.$store.state.channelDetails.id;
+      this.$inertia.post("/dial/bridges/".concat(this.bridgeParams.bridgeId, "/addChannel"), this.bridgeParams, {
+        onSuccess: function onSuccess(response) {
+          console.log(response);
+        },
+        onError: function onError(errors) {
+          console.log(errors);
+        }
+      });
+    },
+    submit: function submit() {
+      var _this3 = this;
+
+      localStorage.setItem('extension', this.login.ext);
+      this.$inertia.post("/dial/channels/create", this.login, {
+        onSuccess: function onSuccess() {
+          _this3.$store.dispatch("setChannelDetails", _this3.dialResponse);
+
+          _this3.$inertia.post("/dial/channels/".concat(_this3.dialResponse.id, "/dial"), _this3.dialResponse, {
+            onSuccess: function onSuccess() {
+              _this3.$store.dispatch("setOnline", 'ON');
+
+              _this3.giveBridge();
+            },
+            onError: function onError(errors) {
+              console.log(errors);
+            }
+          });
         },
         onError: function onError(errors) {
           console.log(errors);
@@ -3277,7 +4144,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      showMenu: false
+    };
+  }
 });
 
 /***/ }),
@@ -3363,12 +4235,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var actions = {
-  setChannels: function setChannels(_ref, channels) {
+  setOnline: function setOnline(_ref, online) {
     var commit = _ref.commit;
+    commit("setOnline", online);
+  },
+  setChannelDetails: function setChannelDetails(_ref2, channelDetails) {
+    var commit = _ref2.commit;
+    commit("setChannelDetails", channelDetails);
+  },
+  setChannels: function setChannels(_ref3, channels) {
+    var commit = _ref3.commit;
     commit("setChannels", channels);
   },
-  setEndpoints: function setEndpoints(_ref2, endpoints) {
-    var commit = _ref2.commit;
+  setEndpoints: function setEndpoints(_ref4, endpoints) {
+    var commit = _ref4.commit;
     commit("setEndpoints", endpoints);
   }
 };
@@ -3449,6 +4329,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var mutations = {
+  setOnline: function setOnline(state, online) {
+    state.online = online;
+  },
+  setChannelDetails: function setChannelDetails(state, channelDetails) {
+    state.channelDetails = channelDetails;
+  },
   setChannels: function setChannels(state, channels) {
     state.channels = channels;
   },
@@ -3472,6 +4358,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var state = {
+  online: '',
+  channelDetails: [],
   channels: [],
   endpoints: []
 };
@@ -25631,6 +26519,45 @@ component.options.__file = "resources/js/Pages/Devices.vue"
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dial.vue":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/Dial.vue ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dial.vue?vue&type=template&id=79624a99& */ "./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99&");
+/* harmony import */ var _Dial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dial.vue?vue&type=script&lang=js& */ "./resources/js/Pages/Dial.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Dial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/Dial.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Endpoints.vue":
 /*!******************************************!*\
   !*** ./resources/js/Pages/Endpoints.vue ***!
@@ -25853,6 +26780,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dial.vue?vue&type=script&lang=js&":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Dial.vue?vue&type=script&lang=js& ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dial.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Dial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Endpoints.vue?vue&type=script&lang=js&":
 /*!*******************************************************************!*\
   !*** ./resources/js/Pages/Endpoints.vue?vue&type=script&lang=js& ***!
@@ -25985,6 +26928,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99&":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99& ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dial_vue_vue_type_template_id_79624a99___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Dial.vue?vue&type=template&id=79624a99& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99&");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Endpoints.vue?vue&type=template&id=1109c725&":
 /*!*************************************************************************!*\
   !*** ./resources/js/Pages/Endpoints.vue?vue&type=template&id=1109c725& ***!
@@ -26087,7 +27047,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "flex flex-col" }, [
+    _c("div", { staticClass: "flex flex-col px-10 py-10" }, [
       _c("div", { staticClass: "-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" }, [
         _c(
           "div",
@@ -26369,60 +27329,999 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "mt-10 relative" }, [
-      _c("div", { staticClass: "absolute flex justify-center" }, [
-        _c("div", { staticClass: "w-36 ml-20" }, [
-          _c(
-            "label",
-            {
-              staticClass: "block text-sm font-medium text-gray-700",
-              attrs: { for: "email" }
-            },
-            [_vm._v("Call Extension")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-1" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.call.callExt,
-                  expression: "call.callExt"
-                }
-              ],
-              staticClass:
-                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
-              attrs: {
-                type: "text",
-                name: "email",
-                id: "email",
-                placeholder: "you@example.com"
+    _c("div", { staticClass: "flex-inline pb-10" }, [
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
               },
-              domProps: { value: _vm.call.callExt },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              [_vm._v("Create Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.callExt,
+                    expression: "call.callExt"
                   }
-                  _vm.$set(_vm.call, "callExt", $event.target.value)
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.callExt },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "callExt", $event.target.value)
+                  }
                 }
-              }
-            })
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.makeCall }
+              },
+              [_vm._v("\r\n      Proceed\r\n    ")]
+            )
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-7 ml-2" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-              attrs: { type: "button" },
-              on: { click: _vm.makeCall }
-            },
-            [_vm._v("\r\n      Proceed\r\n    ")]
-          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Call Extension")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.callExt,
+                    expression: "call.callExt"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.callExt },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "callExt", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-36 ml-2" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Channel ID")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.makeCallwithChannelID }
+              },
+              [_vm._v("\r\n      Proceed\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Create a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.createChannel.ext,
+                    expression: "createChannel.ext"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.createChannel.ext },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.createChannel, "ext", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.channelCreate }
+              },
+              [_vm._v("\r\n      Proceed\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Resume Priority")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.resumeChannel }
+              },
+              [_vm._v("\r\n      Resume\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Channel ID")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-36 ml-2" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Statis App")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.app,
+                    expression: "call.app"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.app },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "app", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.transferChannel }
+              },
+              [_vm._v("\r\n      Transfer App\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Channel ID")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-36 ml-2" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Transfer Extension")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.callExt,
+                    expression: "call.callExt"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.callExt },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "callExt", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.transferCall }
+              },
+              [_vm._v("\r\n      Transfer Call\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Create a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.callExt,
+                    expression: "call.callExt"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.callExt },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "callExt", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.answerChannel }
+              },
+              [_vm._v("\r\n      Answer\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Ring a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.ringChannel }
+              },
+              [_vm._v("\r\n      Ring\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Channel ID")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-36 ml-2" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("DTMF Value")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.dtmf,
+                    expression: "call.dtmf"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.dtmf },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "dtmf", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.sendDTMF }
+              },
+              [_vm._v("\r\n      Transfer Call\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10" }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Channel ID")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-36 ml-2" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Mute Mode")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.call.muteMode,
+                      expression: "call.muteMode"
+                    }
+                  ],
+                  staticClass:
+                    "bg-gray-300 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md",
+                  attrs: { id: "location", name: "location" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.call,
+                        "muteMode",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "both" } }, [_vm._v("Both")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "in" } }, [_vm._v("In")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "out" } }, [_vm._v("Out")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.muteChannel }
+              },
+              [_vm._v("\r\n      Transfer Call\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Hold a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.holdChannel }
+              },
+              [_vm._v("\r\n      Hold\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Music on Hold a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.mohChannel }
+              },
+              [_vm._v("\r\n      Music on Hold\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Music on Hold a Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.silenceChannel }
+              },
+              [_vm._v("\r\n      Silence Channel\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Record Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.recordChannel }
+              },
+              [_vm._v("\r\n      Record Channel\r\n    ")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-10 " }, [
+        _c("div", { staticClass: " flex justify-start" }, [
+          _c("div", { staticClass: "w-36 ml-20" }, [
+            _c(
+              "label",
+              {
+                staticClass: "block text-sm font-medium text-gray-700",
+                attrs: { for: "email" }
+              },
+              [_vm._v("Dial Channel")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "mt-1" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.call.channelID,
+                    expression: "call.channelID"
+                  }
+                ],
+                staticClass:
+                  "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: { type: "text", name: "email", id: "email" },
+                domProps: { value: _vm.call.channelID },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.call, "channelID", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-7 ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+                attrs: { type: "button" },
+                on: { click: _vm.dialChannel }
+              },
+              [_vm._v("\r\n      Dial Channel\r\n    ")]
+            )
+          ])
         ])
       ])
     ]),
@@ -28083,7 +29982,603 @@ var render = function() {
             )
           ]
         )
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Create Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.type,
+                  expression: "bridge.type"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder:
+                  "mixing, holding, dtmf_events, proxy_media, video_sfu, video_single",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.type },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "type", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("ID")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Name")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.name,
+                  expression: "bridge.name"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "name",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "name", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.makeBridge }
+            },
+            [_vm._v("\r\n      Proceed\r\n    ")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Update Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.type,
+                  expression: "bridge.type"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder:
+                  "mixing, holding, dtmf_events, proxy_media, video_sfu, video_single",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.type },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "type", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("ID")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Name")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.name,
+                  expression: "bridge.name"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "name",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "name", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.updateBridge }
+            },
+            [_vm._v("\r\n      Proceed\r\n    ")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Add Channel")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "bridge ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("To Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.channelId,
+                  expression: "bridge.channelId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "channel ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.channelId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "channelId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.addChannelToBridge }
+            },
+            [_vm._v("\r\n      Add Channel to Bridge\r\n    ")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Remove Channel")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "bridge ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-36 ml-2" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("To Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.channelId,
+                  expression: "bridge.channelId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "channel ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.channelId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "channelId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.removeChannelFromBridge }
+            },
+            [_vm._v("\r\n      Remove Channel to Bridge\r\n    ")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Moh Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "bridge ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.mohBridge }
+            },
+            [_vm._v("\r\n      Moh Bridge\r\n    ")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-10" }, [
+      _c("div", { staticClass: " flex justify-start" }, [
+        _c("div", { staticClass: "w-36 ml-20" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-sm font-medium text-gray-700",
+              attrs: { for: "email" }
+            },
+            [_vm._v("Record Bridge")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-1" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bridge.bridgeId,
+                  expression: "bridge.bridgeId"
+                }
+              ],
+              staticClass:
+                "bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+              attrs: {
+                placeholder: "bridge ID",
+                type: "text",
+                name: "email",
+                id: "email"
+              },
+              domProps: { value: _vm.bridge.bridgeId },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.bridge, "bridgeId", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-7 ml-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+              attrs: { type: "button" },
+              on: { click: _vm.recordBridge }
+            },
+            [_vm._v("\r\n      Record Bridge\r\n    ")]
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -28298,6 +30793,212 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/Dial.vue?vue&type=template&id=79624a99& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "bg-indigo-700 h-screen" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8"
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "mt-8 w-36 inline-flex items-center justify-center"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.login.ext,
+                    expression: "login.ext"
+                  }
+                ],
+                staticClass:
+                  "bg-white py-4 px-6 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: {
+                  placeholder: "User Extension",
+                  type: "text",
+                  name: "email",
+                  id: "email"
+                },
+                domProps: { value: _vm.login.ext },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.submit($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.login, "ext", $event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.online == ""
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-2 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto",
+                  on: { click: _vm.submit }
+                },
+                [_vm._v("\r\n        Login\r\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.online == "ON"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto",
+                  on: { click: _vm.dial }
+                },
+                [_vm._v("\r\n        Dial\r\n      ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.online == "OnCall"
+            ? _c(
+                "a",
+                {
+                  staticClass:
+                    "mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-red-600 hover:bg-indigo-50 sm:w-auto",
+                  on: { click: _vm.hangUp }
+                },
+                [_vm._v("\r\n        HangUp\r\n      ")]
+              )
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8"
+        },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "mt-8 w-36 inline-flex items-center justify-center"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.out.number,
+                    expression: "out.number"
+                  }
+                ],
+                staticClass:
+                  "bg-white py-4 px-6 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md",
+                attrs: {
+                  placeholder: "User Extension",
+                  type: "text",
+                  name: "email",
+                  id: "email"
+                },
+                domProps: { value: _vm.out.number },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !$event.type.indexOf("key") &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.callOutside($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.out, "number", $event.target.value)
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "mt-2 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto",
+              on: { click: _vm.callOutside }
+            },
+            [_vm._v("\r\n        Dial\r\n      ")]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "h2",
+      { staticClass: "text-3xl font-extrabold text-white sm:text-4xl" },
+      [_c("span", { staticClass: "block" }, [_vm._v("Click to Dial")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "h2",
+      { staticClass: "text-3xl font-extrabold text-white sm:text-4xl" },
+      [_c("span", { staticClass: "block" }, [_vm._v("Dial Outside")])]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -43438,6 +46139,8 @@ var map = {
 	"./Bridges.vue": "./resources/js/Pages/Bridges.vue",
 	"./Devices": "./resources/js/Pages/Devices.vue",
 	"./Devices.vue": "./resources/js/Pages/Devices.vue",
+	"./Dial": "./resources/js/Pages/Dial.vue",
+	"./Dial.vue": "./resources/js/Pages/Dial.vue",
 	"./Endpoints": "./resources/js/Pages/Endpoints.vue",
 	"./Endpoints.vue": "./resources/js/Pages/Endpoints.vue",
 	"./Stats": "./resources/js/Pages/Stats.vue",

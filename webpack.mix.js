@@ -12,8 +12,18 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    // .browserSync({
+    //     proxy: '172.16.10.210',
+    //     host: '172.16.10.210',
+    //     open: 'external',
+    //     port: 8088,
+    //     notify: false,
+    //     https: {
+    //         cert: "smartdial",
+    //         key: "password"
+    //     }
+    // })
     .vue()
-    // .sass('resources/sass/app.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ]);

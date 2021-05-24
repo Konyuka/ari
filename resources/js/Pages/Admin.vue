@@ -1,7 +1,7 @@
 <template>
 <div>
   <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="flex flex-col">
+<div class="flex flex-col px-10 py-10">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="px-10 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -82,14 +82,15 @@
   </div>
 </div>
 
-<!-- Post Requests -->
-<div class="mt-10 relative">
-  <div class="absolute flex justify-center">
+<div class="flex-inline pb-10">
+  <!-- Post to Channel -->
+<div class="mt-10">
+  <div class=" flex justify-start">
 
   <div class="w-36 ml-20">
-    <label for="email" class="block text-sm font-medium text-gray-700">Call Extension</label>
+    <label for="email" class="block text-sm font-medium text-gray-700">Create Channel</label>
     <div class="mt-1">
-      <input v-model="call.callExt" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="you@example.com">
+      <input v-model="call.callExt" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
     </div>
   </div>
 
@@ -99,9 +100,330 @@
     </button>
   </div>
 
+  </div>
+</div>
 
+<!-- Create Channel With Specific ID -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Call Extension</label>
+    <div class="mt-1">
+      <input v-model="call.callExt" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Channel ID</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="makeCallwithChannelID" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Proceed
+    </button>
+  </div>
 
   </div>
+</div>
+
+<!-- Create a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Create a Channel</label>
+    <div class="mt-1">
+      <input v-model="createChannel.ext" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="channelCreate" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Proceed
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Resume a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Resume Priority</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="resumeChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Resume
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Transfer channel between Stasis apps -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Channel ID</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Statis App</label>
+    <div class="mt-1">
+      <input v-model="call.app" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="transferChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Transfer App
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Transfer call to another extension -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Channel ID</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Transfer Extension</label>
+    <div class="mt-1">
+      <input v-model="call.callExt" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="transferCall" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Transfer Call
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Answer a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Create a Channel</label>
+    <div class="mt-1">
+      <input v-model="call.callExt" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="answerChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Answer
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Ring a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Ring a Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="ringChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Ring
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Send DTMF -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Channel ID</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">DTMF Value</label>
+    <div class="mt-1">
+      <input v-model="call.dtmf" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="sendDTMF" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Transfer Call
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Mute Channel -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Channel ID</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Mute Mode</label>
+    <div class="mt-1">
+      <select v-model="call.muteMode" id="location" name="location" class="bg-gray-300 mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+        <option value="both">Both</option>
+        <option value="in">In</option>
+        <option value="out">Out</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="muteChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Transfer Call
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Hold a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Hold a Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="holdChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Hold
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Music On Hold a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Music on Hold a Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="mohChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Music on Hold
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Silence a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Music on Hold a Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="silenceChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Silence Channel
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Silence a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Record Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="recordChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Record Channel
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Dial a channel -->
+<div class="mt-10 ">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Dial Channel</label>
+    <div class="mt-1">
+      <input v-model="call.channelID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="dialChannel" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Dial Channel
+    </button>
+  </div>
+
+  </div>
+</div>
+
+
+
 </div>
 
 
@@ -302,14 +624,22 @@ export default {
     'context',
     'channelDetails',
     'rtp',
-    'callResponse'
+    'callResponse',
+    'createChannelResponse'
   ],
   components: {
   },
   data(){
     return{
+      createChannel:{
+        ext:''
+      },
       call:{
         callExt:'',
+        channelID:'',
+        app:'',
+        dtmf:'',
+        muteMode:''
       },
       getChannelData:{
         channelId:'',
@@ -335,9 +665,149 @@ export default {
         exten:'',
         priority:''
       }
-    }     
+    }
   },
   methods:{
+    dialChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/dial`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    recordChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/record`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    silenceChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/silence`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    mohChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/moh`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    holdChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/hold`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    muteChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/mute`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    sendDTMF(){
+      this.$inertia.post(`/channels/${this.call.channelId}/ring`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    ringChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/ring`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    answerChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/answer`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    transferCall(){
+      this.$inertia.post(`/channels/${this.call.channelId}/redirect`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    transferChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/move`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    resumeChannel(){
+      this.$inertia.post(`/channels/${this.call.channelId}/continue`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    channelCreate(){
+      this.$inertia.post(`/channels/create`, this.createChannel, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    makeCallwithChannelID(){
+      this.$inertia.post(`/channels/${this.call.channelId}`, this.call, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
     makeCall(){
       this.$inertia.post(`/channels`, this.call, {
         onSuccess: (response) => {
@@ -373,7 +843,7 @@ export default {
     channelIdFunc(data){
       this.showChannelDetails = true
       this.getChannelData.channelId = data
-      this.$inertia.post(`/channels/${this.getChannelData.channelId}`, this.getChannelData, {
+      this.$inertia.post(`/channel/${this.getChannelData.channelId}`, this.getChannelData, {
         onSuccess: (response) => {
           console.log(response)
         },

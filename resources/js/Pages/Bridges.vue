@@ -156,6 +156,167 @@
   </div>
 </div>
 
+<!-- Create Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Create Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.type" placeholder="mixing, holding, dtmf_events, proxy_media, video_sfu, video_single" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">ID</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Name</label>
+    <div class="mt-1">
+      <input v-model="bridge.name" placeholder="name" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="makeBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Proceed
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Update Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Update Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.type" placeholder="mixing, holding, dtmf_events, proxy_media, video_sfu, video_single" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">ID</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">Name</label>
+    <div class="mt-1">
+      <input v-model="bridge.name" placeholder="name" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="updateBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Proceed
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Update Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Add Channel</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="bridge ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">To Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.channelId" placeholder="channel ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="addChannelToBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Add Channel to Bridge
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Update Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Remove Channel</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="bridge ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="w-36 ml-2">
+    <label for="email" class="block text-sm font-medium text-gray-700">To Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.channelId" placeholder="channel ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="removeChannelFromBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Remove Channel to Bridge
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- MOH Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Moh Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="bridge ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="mohBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Moh Bridge
+    </button>
+  </div>
+
+  </div>
+</div>
+
+<!-- Record Bridge -->
+<div class="mt-10">
+  <div class=" flex justify-start">
+
+  <div class="w-36 ml-20">
+    <label for="email" class="block text-sm font-medium text-gray-700">Record Bridge</label>
+    <div class="mt-1">
+      <input v-model="bridge.bridgeId" placeholder="bridge ID" type="text" name="email" id="email" class="bg-gray-300 py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+    </div>
+  </div>
+
+  <div class="mt-7 ml-2"> 
+    <button  @click="recordBridge" type="button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Record Bridge
+    </button>
+  </div>
+
+  </div>
+</div>
   
 </div>    
 </template>
@@ -176,10 +337,77 @@ export default {
       showBridgeID:false,
       channelDetails:{
         id:''
+      },
+      bridge:{
+        type:'',
+        bridgeId:'',
+        name:'',
+        channelId:'',
+        format:''
       }
     }     
   },
   methods:{
+    recordBridge(){
+      this.$inertia.post(`/bridges/${this.bridge.bridgeId}/record`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    mohBridge(){
+      this.$inertia.post(`/bridges/${this.bridge.bridgeId}/moh`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    removeChannelFromBridge(){
+      this.$inertia.post(`/bridges/${this.bridge.bridgeId}/removeChannel`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    addChannelToBridge(){
+      this.$inertia.post(`/bridges/${this.bridge.bridgeId}/addChannel`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    updateBridge(){
+      this.$inertia.post(`/bridges`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
+    makeBridge(){
+      this.$inertia.post(`/bridges`, this.bridge, {
+        onSuccess: (response) => {
+          console.log(response)
+        },
+        onError: (errors) => {
+          console.log(errors)
+        },
+      })
+    },
     showBridgeDetails(IdString){
       this.channelDetails.id = IdString
       this.showBridgeID = true

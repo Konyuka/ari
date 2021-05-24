@@ -36,7 +36,7 @@
                 </div>
 
                 <!-- Mobile Menu        -->
-                <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+                <div  class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
                 <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div class="px-5 pt-4 flex items-center justify-between">
                     <div>
@@ -129,6 +129,11 @@ export default {
 
   components: {
   },
+  data(){
+      return{
+          showMenu: false
+      }
+  }
 }
 </script>
 

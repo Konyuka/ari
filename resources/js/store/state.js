@@ -1,4 +1,6 @@
 const state = {
+    online: '',
+    channelDetails: [],
     channels: [],
     endpoints:[]
 };
